@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ExamPrepDaily - Daily Current Affairs & GK</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f5f7fa;
+    }
+
+    .navbar {
+        background: #1565c0;
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    .nav-links a {
+        color: white;
+        margin-left: 20px;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    .title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #1565c0;
+        margin-bottom: 10px;
+    }
+
+    .question {
+        background: #eef3ff;
+        padding: 12px;
+        border-left: 4px solid #1565c0;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    .date {
+        font-size: 14px;
+        color: #777;
+        margin-bottom: 15px;
+    }
+
+    .footer {
+        text-align: center;
+        padding: 20px;
+        background: #e3e9f2;
+        margin-top: 40px;
+    }
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h1>ExamPrepDaily</h1>
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#ca">Current Affairs</a>
+        <a href="#mcq">Daily MCQs</a>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+    <!-- HOME SECTION -->
+    <div class="card" id="home">
+        <div class="title">Welcome to ExamPrepDaily</div>
+        <p>Your free daily Current Affairs & GK website for all exams — SSC, Banking, Railways, Defence, State exams, and more.</p>
+    </div>
+
+    <!-- CURRENT AFFAIRS -->
+    <div class="card" id="ca">
+        <div class="title">Today's Current Affairs</div>
+        <div class="date" id="caDate"></div>
+
+        <ul id="caList">
+            <!-- JS will fill automatically -->
+        </ul>
+    </div>
+
+    <!-- MCQ SECTION -->
+    <div class="card" id="mcq">
+        <div class="title">Daily MCQ Quiz</div>
+        <div class="date" id="mcqDate"></div>
+
+        <div id="mcqList">
+            <!-- JS will fill automatically -->
+        </div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2025 ExamPrepDaily — All Rights Reserved
+</div>
+
+<script>
+document.getElementById("caDate").innerText = new Date().toDateString();
+document.getElementById("mcqDate").innerText = new Date().toDateString();
+
+// Sample Current Affairs (You can replace later)
+const caData = [
+    "India launches new AI-driven education mission.",
+    "ISRO partners with Japan for Lunar exploration.",
+    "RBI announces digital currency roadmap for 2025."
+];
+
+// Fill CA automatically
+let caHTML = "";
+caData.forEach(item => caHTML += <li>${item}</li>);
+document.getElementById("caList").innerHTML = caHTML;
+
+// Sample MCQs
+const mcqs = [
+    { q: "Which country is partnering with ISRO?", a: "Japan" },
+    { q: "Who controls India's digital currency roadmap?", a: "RBI" },
+    { q: "Which mission focuses on AI in education?", a: "National AI Education Mission" }
+];
+
+// Fill MCQs automatically
+let mcqHTML = "";
+mcqs.forEach((item, index) => {
+    mcqHTML += `
+        <div class="question">
+            <b>Q${index + 1}: </b>${item.q}<br>
+            <b>Answer:</b> ${item.a}
+        </div>
+    `;
+});
+document.getElementById("mcqList").innerHTML = mcqHTML;
+</script>
+
+</body>
+</html>
