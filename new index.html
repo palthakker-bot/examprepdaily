@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExamPrepDaily – Daily GK & Current Affairs</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f7fb;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #3a57e8;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .question-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .options button {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 8px;
+      background: #e8e8e8;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .options button.correct {
+      background: #4caf50;
+      color: white;
+    }
+
+    .options button.wrong {
+      background: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>ExamPrepDaily – Daily GK Practice</header>
+
+<div class="container" id="quiz-container"></div>
+
+<script>
+// -------------------------
+// QUESTIONS DATA
+// -------------------------
+const questions = [
+  {
+    question: "1. Who is the current President of India?",
+    options: ["Narendra Modi", "Droupadi Murmu", "Amit Shah", "Rajnath Singh"],
+    answer: 1
+  },
+  {
+    question: "2. Which state is the largest by area in India?",
+    options: ["Maharashtra", "Uttar Pradesh", "Rajasthan", "Tamil Nadu"],
+    answer: 2
+  },
+  {
+    question: "3. When was the Constitution of India adopted?",
+    options: ["26 January 1947", "15 August 1947", "26 November 1949", "26 January 1952"],
+    answer: 2
+  },
+  {
+    question: "4. Which planet is known as the Red Planet?",
+    options: ["Mars", "Venus", "Jupiter", "Saturn"],
+    answer: 0
+  },
+  {
+    question: "5. Who wrote the National Anthem of India?",
+    options: ["Sarojini Naidu", "Rabindranath Tagore", "Bankim Chandra", "Jawaharlal Nehru"],
+    answer: 1
+  }
+];
+
+// -------------------------
+// DISPLAY QUESTIONS
+// -------------------------
+const quizContainer = document.getElementById("quiz-container");
+
+questions.forEach((q, index) => {
+  const box = document.createElement("div");
+  box.className = "question-box";
+
+  let html = <h3>${q.question}</h3><div class='options'>;
+
+  q.options.forEach((opt, i) => {
+    html += <button onclick="checkAnswer(this, ${i}, ${q.answer})">${opt}</button>;
+  });
+
+  html += </div>;
+  box.innerHTML = html;
+  quizContainer.appendChild(box);
+});
+
+// -------------------------
+// CHECK ANSWER
+// -------------------------
+function checkAnswer(btn, selected, correct) {
+  const allButtons = btn.parentNode.querySelectorAll("button");
+
+  // Disable all buttons
+  allButtons.forEach(b => b.disabled = true);
+
+  if (selected === correct) {
+    btn.classList.add("correct");
+  } else {
+    btn.classList.add("wrong");
+    allButtons[correct].classList.add("correct");
+  }
+}
+</script>
+
+</body>
+</html>
